@@ -7,12 +7,7 @@ from models import storage
 class BaseModel:
     """ Class base """
     def __init__(self, *args, **kwargs):
-        if args != ():
-            if args[0] is not None and type(args[0]) == str:
-                self.id = args[0]
-            if args[1] is not None and type(args[1]) == str:
-                self.created_at = datetime.datetime.fromisoformat(args[1])
-        elif kwargs != {}:
+        if kwargs != {}:
             if kwargs["id"] is not None:
                 self.id = kwargs["id"]
             if kwargs["created_at"] is not None:
@@ -21,6 +16,7 @@ class BaseModel:
             self.id = str(uuid.uuid4())
             self.created_at = datetime.datetime.now()
         self.updated_at = datetime.datetime.now()
+        storage.new(self)
 
     def __str__(self):
         """ __str__: string representation """
