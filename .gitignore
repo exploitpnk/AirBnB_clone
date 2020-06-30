@@ -1,0 +1,11 @@
+# python compiled module
+*.pyc
+
+#python cache dir
+__pycache__/
+
+#back up files
+*~
+
+#json files
+*.json
